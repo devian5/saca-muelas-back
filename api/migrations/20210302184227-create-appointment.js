@@ -21,6 +21,15 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      clientId:{
+        type:Sequelize.INTEGER,
+        references: {
+          model: 'Clients',
+          key: 'id'
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
       }
     });
   },
