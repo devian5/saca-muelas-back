@@ -14,7 +14,7 @@ services:
         image: mysql
         restart: always
         volumes:
-            - dbdata:/var/lib/mysql
+            - ./data/mysql:/var/lib/mysql
         ports:
             - 3306:3306
         environment:
