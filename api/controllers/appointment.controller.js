@@ -14,7 +14,7 @@ class AppointmentController {
         return Appointment.findOne({ where: { id } });
     }
 
-    async findAllByClientId(iso) {
+    async findAllByClientId(id) {
         return Appointment.findAll({ where: { clientId } });
     }
 }
