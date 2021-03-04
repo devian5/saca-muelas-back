@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 services:
   api:
         image: node
@@ -12,9 +12,9 @@ services:
             - "mysql"
         environment:
             MYSQL_HOST: "mysql"
-            MYSQL_DATABASE: 'clase'
-            MYSQL_USER: 'user'
-            MYSQL_ROOT_PASSWORD: 'password'
+            MYSQL_DATABASE: "clase"
+            MYSQL_USER: "user"
+            MYSQL_ROOT_PASSWORD: "password"
           
   mysql:
         container_name: mysql
@@ -25,12 +25,12 @@ services:
         ports:
             - 3306:3306
         environment:
-            MYSQL_DATABASE: 'clase'
-            MYSQL_USER: 'user'
-            MYSQL_PASSWORD: 'password'
-            MYSQL_ROOT_PASSWORD: 'password'
+            MYSQL_DATABASE: "clase"
+            MYSQL_USER: "user"
+            MYSQL_PASSWORD: "password"
+            MYSQL_ROOT_PASSWORD: "password"
         expose:
-        - '3306'
+        - "3306"
    
   phpmyadmin:
         image: phpmyadmin
@@ -41,8 +41,8 @@ services:
         ports:
             - 8080:80  
         environment: 
-            PMA_HOST: 'mysql'
-            PMA_USER: 'root'
-            PMA_PASSWORD: 'password'
+            PMA_HOST: "mysql"
+            PMA_USER: "root"
+            PMA_PASSWORD: "password"
 volumes:
     dbdata:
