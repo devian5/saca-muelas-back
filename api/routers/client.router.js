@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const appointmentRouter = require('./appointment.router');
+//const appointmentRouter = require('./appointment.router');
 const clientController = require('../controllers/client.controller');
 
 //CLIENT RESOURCES
-router.use('/:id/appointments', appointmentRouter);
+//router.use('/:id/appointments', appointmentRouter);
 
 
 
@@ -15,10 +15,8 @@ router.get('/', async(req, res) => {
         const result = await clientController.indexAll();
         res.json(result);
     } catch (error) {
-        res.status(500).json({
-            error: 'error',
-            message: 'error'
-        })
+
+        console.log(error)
     }
 })
 
