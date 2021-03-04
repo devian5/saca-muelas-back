@@ -2,22 +2,27 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-   
-    await queryInterface.bulkInsert('Professionals', [{
-      name: 'Manuel',
-      iso: 'ES',
+
+    await queryInterface.bulkInsert('Appointments', [{
+      covid: false,
+      date: new Date,
       createdAt: new Date,
       updatedAt: new Date
   },
   {
-      name: 'France',
-      iso: 'FR',
+    covid: true,
+    date: new Date,
+    createdAt: new Date,
+    updatedAt: new Date
+
+  },
+  {
+      covid: false,
+      date: new Date,
       createdAt: new Date,
       updatedAt: new Date
-
   }
 ]);
-
   },
 
   down: async (queryInterface, Sequelize) => {

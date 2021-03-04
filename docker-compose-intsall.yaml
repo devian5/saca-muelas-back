@@ -1,8 +1,0 @@
-version: '2'
-services:
-  api:
-        image: node
-        command: "npm install"
-        working_dir: /app
-        volumes:
-            - ./api:/app
