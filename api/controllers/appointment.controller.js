@@ -10,7 +10,11 @@ class AppointmentController {
         return Appointment.findOne({ where: { id } });
     }
 
+<<<<<<< HEAD
     async findAllByClientId(clientId) {
+=======
+    async findAllByClientId(id) {
+>>>>>>> ea828091a182fbcf84463e5286c5455b93490e83
         return Appointment.findAll({ where: { clientId } });
     }
 }
