@@ -1,14 +1,21 @@
 version: '2'
 services:
   api:
-        build: ./api
+        image: node
+        command: "npm start"
+        working_dir: /app
         volumes:
-            - ./api:/api
-            - /api/node_modules
+            - ./api:/app
         ports:
             - 3000:3000
         depends_on:
-            - mysql      
+            - "mysql"
+        environment:
+            MYSQL_HOST: "mysql"
+            MYSQL_DATABASE: 'clase'
+            MYSQL_USER: 'user'
+            MYSQL_ROOT_PASSWORD: 'password'
+          
   mysql:
         container_name: mysql
         image: mysql
