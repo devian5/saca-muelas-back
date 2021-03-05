@@ -10,6 +10,10 @@ class ClientController {
 
     }
 
+    async create(){
+        return Client.create();
+    }
+
     async findById(id) {
         return Client.findOne({ where: { id } });
     }

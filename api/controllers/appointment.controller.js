@@ -6,6 +6,10 @@ class AppointmentController {
         return Appointment.findAll();
     }
 
+    async create(){
+        return Appointment.create()
+    }
+
     async findById(id) {
         return Appointment.findOne({ where: { id } });
     }
