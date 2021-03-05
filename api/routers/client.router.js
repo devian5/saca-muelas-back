@@ -32,4 +32,15 @@ router.get('/:id', async(req, res) => {
     }
 })
 
+router.post('/', async (req,res) => {
+    try {
+        console.log(req.body);
+        const result = await clientController.create(req.body);
+        res.json({result,date: new Date});
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
 module.exports = router;

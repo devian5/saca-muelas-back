@@ -5,20 +5,20 @@ module.exports = {
 
     await queryInterface.bulkInsert('Appointments', [{
       covid: false,
-      date: new Date,
+      date: '2020-12-04 12:44:16',
       createdAt: new Date,
       updatedAt: new Date
   },
   {
     covid: true,
-    date: new Date,
+    date: '2020-03-04 21:44:16',
     createdAt: new Date,
     updatedAt: new Date
 
   },
   {
       covid: false,
-      date: new Date,
+      date: '2021-03-04 18:44:16',
       createdAt: new Date,
       updatedAt: new Date
   }

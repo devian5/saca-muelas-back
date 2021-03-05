@@ -6,8 +6,8 @@ class AppointmentController {
         return Appointment.findAll();
     }
 
-    async create(){
-        return Appointment.create()
+    async create(appointment){
+        return Appointment.create(appointment)
     }
 
     async findById(id) {

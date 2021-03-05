@@ -10,8 +10,8 @@ class ClientController {
 
     }
 
-    async create(){
-        return Client.create();
+    async create(client){
+        return Client.create(client);
     }
 
     async findById(id) {
