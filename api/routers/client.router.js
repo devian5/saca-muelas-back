@@ -3,7 +3,7 @@ const router = require('express').Router();
 const clientController = require('../controllers/client.controller');
 
 //CLIENT RESOURCES
-//router.use('/:id/appointments', appointmentRouter);
+
 
 
 
