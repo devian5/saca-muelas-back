@@ -2,12 +2,9 @@ const { Client } = require('../models');
 
 class ClientController {
 
-    constructor() {
-
-    }
+   
     async indexAll() {
         return Client.findAll();
-
     }
 
     async create(client){
