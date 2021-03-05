@@ -1,14 +1,16 @@
 const router = require('express').Router();
-//const appointmentRouter = require('./appointment.router');
 const clientController = require('../controllers/client.controller');
 
-//CLIENT RESOURCES
 
-
-
-
-
-//CLIENT ENDPOINTS
+router.post('/login', async (req,res) =>{
+    try {
+        const {email,password} = req.body;
+        const result = await clientController.login(email,password);
+        res.json({result,date: new Date});
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 router.get('/', async(req, res) => {
     try {
@@ -16,7 +18,7 @@ router.get('/', async(req, res) => {
         res.json(result);
     } catch (error) {
 
-        console.log(error)
+        console.log('estoy en el catch',error)
     }
 })
 

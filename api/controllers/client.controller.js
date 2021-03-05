@@ -1,15 +1,14 @@
 const { Client } = require('../models');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const client = require('../models/client');
 const secret = process.env.JWT_SECRET || 'danisecret';
 
 
 class ClientController {
 
     async login(email,password){
-        const user = Client.findOne({email})
-        if(!user){
+        const client = await Client.findOne({where:{email}})
+        if(!client){
             throw new Error('The email does not exist');
         };
         if(!await bcrypt.compare(password,client.password)){
@@ -17,7 +16,7 @@ class ClientController {
         };
 
         const payload = {
-            clientId: client.Id,
+            clientId: client.id,
             tokenCreationDate: new Date
         }
         return jwt.sign(payload, secret)
@@ -28,6 +27,7 @@ class ClientController {
     };
 
     async create(client){
+        client.password = await bcrypt.hash(client.password,5);
         return Client.create(client);
     };
 
