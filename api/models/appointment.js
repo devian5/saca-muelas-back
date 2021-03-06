@@ -9,8 +9,13 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Client, {
         foreignKey: 'clientId',
         sourceKey:'id'
-    });
-    
+      });
+
+      this.belongsTo(models.Professional, {
+        foreignKey: 'ProfessionalId',
+        sourceKey:'id'
+      });
+      
 
     }
   };

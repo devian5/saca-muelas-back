@@ -12,7 +12,7 @@ const appointmentAllHandler = async (req,res) => {
 
 };
 
-const findByIdHandler = async (req,res) => {
+const findClientByIdHandler = async (req,res) => {
     try {
         const result = await appointmentController.findAllByClientId(req.params.id);
 
@@ -45,7 +45,7 @@ const deleteAppointmentHandler = async (req,res) => {
 
 
 router.post('/', createHandler);
-router.get('/:id', findByIdHandler);
+router.get('/:id', findClientByIdHandler);
 router.get('/',appointmentAllHandler);
 router.delete('/:id', deleteAppointmentHandler);
 
