@@ -33,7 +33,7 @@ const deleteProfessionalHandler = async (req,res) => {
 
 const findAppoimentByIdHandler = async (req,res) => {
     try {
-        const result = await appointmentController.findAllByProfessionalId(req.params.id);
+        const result = await professionalController.findAllByProfessionalId(req.params.id);
 
         res.json({result,date: new Date})
     } catch (error) {
@@ -41,17 +41,20 @@ const findAppoimentByIdHandler = async (req,res) => {
     };
 };
 
+const professionalAllHandler = async (req,res) => {
+    try {
+        const result = await professionalController.indexAll();
 
-
-
-
-
-
+        res.json({result,date: new Date});
+    } catch (error) {
+        console.log(error);
+    };
+};
 
 router.post('/', createHandler);
 router.get('/:id', findByIdHandler);
 router.delete('/:id', deleteProfessionalHandler);
-// router.get('/', professionalAllHandler);
+router.get('/', professionalAllHandler);
 router.get('/appointment/:id', findAppoimentByIdHandler);
 
 module.exports = router;

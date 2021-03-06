@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Appointments', {
@@ -30,9 +31,19 @@ module.exports = {
       },
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
+      },
+      professionalId:{
+        type:Sequelize.INTEGER,
+        references: {
+          model: 'Professionals',
+          key: 'id'
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
       }
     });
   },
+
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Appointments');
   }
