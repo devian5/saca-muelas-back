@@ -1,7 +1,22 @@
 version: "2"
 services:
+    api:
+        image: node
+        command: "npm start"
+        working_dir: /app
+        volumes:
+            - ./api:/app
+        ports:
+            - 3000:3000
+        depends_on:
+            - "mysql"
+        environment:
+            MYSQL_HOST: "mysql"
+            MYSQL_DATABASE: "clase"
+            MYSQL_USER: "user"
+            MYSQL_ROOT_PASSWORD: "password"
           
-  mysql:
+    mysql:
         container_name: mysql
         image: mysql
         restart: always
@@ -17,7 +32,7 @@ services:
         expose:
         - "3306"
    
-  phpmyadmin:
+    phpmyadmin:
         image: phpmyadmin
         depends_on:
             - "mysql"
@@ -29,5 +44,3 @@ services:
             PMA_HOST: "mysql"
             PMA_USER: "root"
             PMA_PASSWORD: "password"
-volumes:
-    dbdata:

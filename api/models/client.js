@@ -3,6 +3,7 @@ const {
     Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
+    console.log(sequelize);
     class Client extends Model {
        
         static associate(models) {

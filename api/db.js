@@ -1,14 +1,14 @@
-const config = require('./config/config.json');
+const config = require('./config/config');
 
 const {Sequelize, DataTypes} = require('sequelize');
 const sequelize = new Sequelize(
-    process.env.MYSQL_DATABASE || config.development.database,
-    process.env.MYSQL_USER || config.development.username, 
-    process.env.MYSQL_PASSWORD || config.development.password,
+    config.development.database,
+    config.development.username, 
+    config.development.password,
     {
-        host: process.env.MYSQL_HOST || config.development.host,
+        host: config.development.host,
         dialect: 'mysql',
-        port: process.env.MYSQL_PORT || config.development.port || '3306',
+        port: config.development.port,
         operatorAliases: false,
         pool: {
             max: 5,
@@ -18,7 +18,9 @@ const sequelize = new Sequelize(
         },
     }
 );
-module.exports = sequelize.authenticate().then((db)=>{
-    console.log('CONNECT DB!'); return db
-}).catch(console.log);
+module.exports = sequelize;
+// .then(()=>{
+//     console.log(db);
+//     console.log('CONNECT DB!'); return db
+// }).catch(console.log);
 
