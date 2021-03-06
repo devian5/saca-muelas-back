@@ -2,23 +2,24 @@ const { Appointment } = require('../models');
 
 class AppointmentController {
 
-    async indexAll() {
-        return Appointment.findAll();
-    }
-
     async create(appointment){
         return Appointment.create(appointment)
-    }
+    };
 
-    async findById(id) {
-        return Appointment.findOne({ where: { id } });
-    }
+    async indexAll() {
+        return Appointment.findAll();
+    };
 
-    async findAllByClientId(clientId) {
-        return Appointment.findAll({ where: { clientId } });
-    }
-}
 
-let appointmentController = new AppointmentController();
+    async findAllByClientId(id) {
+        return Appointment.findAll({ where: { id } });
+    };
+
+    async deleteFutureAppointmentById(id) {
+        return Appointment.destroy({where: { id } });
+    };
+};
+
+const appointmentController = new AppointmentController();
 
 module.exports = appointmentController;
