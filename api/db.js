@@ -18,9 +18,5 @@ const sequelize = new Sequelize(
         },
     }
 );
-module.exports = sequelize;
-// .then(()=>{
-//     console.log(db);
-//     console.log('CONNECT DB!'); return db
-// }).catch(console.log);
 
+module.exports = sequelize;

@@ -54,49 +54,34 @@ const createHandler = async (req,res) => {
     };  
 };
 
-// const logOutHandler = async (req, res) =>{
-//     try {
-//         const id = req.params.id;
-//         const user =  await clientController.logOut(id);
-//         const status = `Hope to see you soon, ${user.name}`;
-//         const notStatus = 'usuario no encontrado'
-//         if (!user){
-//             res.json({notStatus})
-//         }else{
-//         res.json({ status, id }); 
-//         }
-//     }catch (err) {
-//         return res.status(500).json({
-//             message: err.message
-//         });
-//     }
-// };
-
-router.get('/logout/:id', auth, async (req, res) => {
+const logOutHandler = async (req, res) =>{
     try {
         const id = req.params.id;
         const user =  await clientController.logOut(id);
-        const status = `Hope to see you soon, ${user.fullName}`;
-        const notStatus = 'usuario no encontrado'
-        if (!user){
-            res.json({notStatus})
-        }else{
-        res.json({ status, id }); 
-        }
-    }catch (err) {
-        return res.status(500).json({
-            message: err.message
-        });
-    }
-});
+        const status = `Until the tooth fairy visits you, ${user.name}`;
+        
+        res.json({ status, id, date:new Date }); 
+        
+    }catch (error) {
+        console.log(error)
+    };
+};
 
+const deleteClientHandler = async (req,res) => {
+    try {
+        const result = await clientController.deleteClientById(req.params.id);
 
+        res.json({result,date: new Date});
+    } catch (error) {
+        console.log(error);
+    };
+};
 
 router.post('/', createHandler);
 router.get('/:id', findByIdHandler);
 router.post('/login', loginHandler);
 router.get('/', clientAllHandler);
-// router.get('/logout/:id', auth, logOutHandler);
-
+router.get('/logout/:id', auth, logOutHandler);
+router.delete('/:id', deleteClientHandler);
 
 module.exports = router;

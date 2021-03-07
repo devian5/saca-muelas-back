@@ -35,16 +35,16 @@ class ClientController {
         return Client.findOne({ where: { id } });
     };
 
-    async findAllByClientId(id) {
-        return Client.findAll({ where: { clientId } });
-    };
-
     async logOut(id) {
         return Client.findByPk(id);
     };
 
+    async deleteClientById(id) {
+        return Client.destroy({where: { id }} )
+    }
+
 }
 
-let clientController = new ClientController();
+const clientController = new ClientController();
 
 module.exports = clientController;

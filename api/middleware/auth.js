@@ -1,9 +1,6 @@
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET || 'danisecret';
 
-/* This function is to verify the token of the user
-when rendering the future appointments or deleten them */
-
 const auth =  async (req, res, next) => {
     try{
         const auth = req.headers.authorization;
@@ -13,8 +10,8 @@ const auth =  async (req, res, next) => {
             throw new Error('Cannot be verified')
         }
         const userId = req.params.id
-        if (userId != payload.userId){
-            throw new Error('User cannot be verified')
+        if (userId != payload.clientId){
+            throw new Error(`The id ${userId} doesn't exist`)
         }
         next()
     }catch(err){
