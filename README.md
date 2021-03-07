@@ -71,17 +71,6 @@ sequelize db:seed:all
 ```
 Since we work with docker you don't need to have anything but docker installed on your computer.
 
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ### And coding style tests
 
@@ -102,9 +91,6 @@ We've been working with Trello for organization pourposes. Here is a picture of 
 First we made a sketch on [diagrams](https://app.diagrams.net/)
 ![alt text](./IMG/sketch.png "Title")
 
-## 🚀 Deployment <a name = "deployment"></a>
-
-Add additional notes about how to deploy this on a live system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
@@ -113,6 +99,7 @@ Add additional notes about how to deploy this on a live system.
 - [docker](https://docker.org/) - Container Manager
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 - [Sequelize](https://sequelize.org) -SQL ORM
+- [Sequelize cli](https://sequelizecli.org) -taltal 
 
 ## ✍️ Authors <a name = "authors"></a>
 
@@ -121,8 +108,3 @@ Add additional notes about how to deploy this on a live system.
 
 See also the list of [contributors](https://github.com/FullStackDeveloperValenciaGeeksHubs0121) who participated in this project.
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References

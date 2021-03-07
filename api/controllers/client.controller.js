@@ -38,6 +38,11 @@ class ClientController {
     async findAllByClientId(id) {
         return Client.findAll({ where: { clientId } });
     };
+
+    async logOut(id) {
+        return Client.findByPk(id);
+    };
+
 }
 
 let clientController = new ClientController();
