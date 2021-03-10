@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="https://images-na.ssl-images-amazon.com/images/I/61R1TCx4HHL._AC_SY355_.jpg" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Sacamuelas Backend</h3>
@@ -8,15 +8,15 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/devian5/saca-muelas-back.svg)](https://github.com/devian5/saca-muelas-back/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/devian5/saca-muelas-back.svg)](https://github.com/devian5/saca-muelas-back/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> Dental clinic backend with mySQL and SequelizeORM.
     <br> 
 </p>
 
@@ -27,7 +27,6 @@
 - [Deployment](#deployment)
 - [Usage](#usage)
 - [Built Using](#built_using)
-- [TODO](../TODO.md)
 - [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
@@ -36,49 +35,47 @@
 This is a project to prove our skills on SQL based backend.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
+**We created  this project with every dependency in a docker container.**
 
-First things first, you need our [repo](https://github.com/devian5/saca-muelas-back/tree/dev), where you can take all the data.
+To run our app you have two options:
+Either run docker compose containers with this command.
 
-BOTON GET ON POSTMAN
+```
+docker-compose up 
+```
+After this,you get into the container and install every dependency described below this text.
 
-This button will take you to postman, where you can interact with our data base via API.
-
-### Prerequisites
-This is the commad to install sequelize, the ORM we used.
+```
+docker exec -it <containerID> bash
+```
 ```
 npm install sequelize-cli -g
 ```
-All our project is docker based. You'll need to have several containers in order to run sql,sequelize and phpmyadmin.
 ```
-docker-compose up
-```
-Run npm.
-```
-npm start
+npm install
 ```
 
-Then, create a database with this command.
+The second option is to install every dependency in local and for that you have to do the same proces but skipping the `docker-compose` part.
+
+
+After installing every dependency, you can get a command list using
+
+```
+sequelize
+```
+Inside of this list you have to run the next three.
 ```
 sequelize db:create
 ```
-Migrate all our tables.
 ```
 sequelize db:migrate
 ```
-Fill the models with this seeds.
 ```
 sequelize db:seed:all
 ```
-Since we work with docker you don't need to have anything but docker installed on your computer.
+To test our app, you hace a postman collection in this link.
 
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/06b90141c7dbd28e8276)
 
 ## 🎈 Usage <a name="usage"></a>
 
@@ -88,7 +85,7 @@ We've been working with Trello for organization pourposes. Here is a picture of 
 
 
 
-First we made a sketch on [diagrams](https://app.diagrams.net/)
+We made a sketch on [diagrams](https://app.diagrams.net/)
 ![alt text](./IMG/sketch.png "Title")
 
 
@@ -98,8 +95,7 @@ First we made a sketch on [diagrams](https://app.diagrams.net/)
 - [Express](https://expressjs.com/) - Server Framework
 - [docker](https://docker.org/) - Container Manager
 - [NodeJs](https://nodejs.org/en/) - Server Environment
-- [Sequelize](https://sequelize.org) -SQL ORM
-- [Sequelize cli](https://sequelizecli.org) -taltal 
+- [Sequelize](https://sequelize.org) -SQL ORM 
 
 ## ✍️ Authors <a name = "authors"></a>
 
@@ -107,4 +103,3 @@ First we made a sketch on [diagrams](https://app.diagrams.net/)
 - [@devian5](https://github.com/devian5) - Idea & Initial work
 
 See also the list of [contributors](https://github.com/FullStackDeveloperValenciaGeeksHubs0121) who participated in this project.
-
