@@ -5,10 +5,13 @@ const auth = require('../middleware/auth');
 
 const loginHandler = async (req,res) => {
     try {
+        console.log(req.body,'<==========================================ROUTER')
+
         const {email,password} = req.body;
         const jwt = await clientController.login(email,password);
-        res.json({jwt})
+        res.json({jwt, date: new Date})
     } catch (error) {
+        console.log(error)
         return res.status(401).json({
             message: error.message
         });
@@ -46,6 +49,8 @@ const findByIdHandler = async (req,res) => {
 
 const createHandler = async (req,res) => {
     try {
+        console.log(req.body,'<==========================================')
+
         const result = await clientController.create(req.body);
 
         res.json({result,date: new Date});

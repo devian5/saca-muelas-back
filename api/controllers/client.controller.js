@@ -7,11 +7,14 @@ const secret = process.env.JWT_SECRET || 'danisecret';
 class ClientController {
 
     async login(email,password){
+        console.log('ENTRAMOS EN EL CONTROLLER');
         const client = await Client.findOne({where:{email}})
         if(!client){
+            console.log('PERO AQUÍ NO')
             throw new Error('The email does not exist');
         };
         if(!await bcrypt.compare(password,client.password)){
+            console.log('NI AQUÍ!!<<<<<<<<<<<======================================')
             throw new Error('Wrong password');
         };
 
@@ -19,6 +22,7 @@ class ClientController {
             clientId: client.id,
             tokenCreationDate: new Date
         }
+        console.log(payload,'<=============PAYLOAD')
         return jwt.sign(payload, secret)
     };
 
@@ -27,7 +31,16 @@ class ClientController {
     };
 
     async create(client){
+        
+        const userEmail = client.email;
+        const found = await Client.findOne({ where: { email: userEmail } });
+        
+        if(found){
+            throw new Error('Email already in use')
+        }
+
         client.password = await bcrypt.hash(client.password,5);
+
         return Client.create(client);
     };
 
