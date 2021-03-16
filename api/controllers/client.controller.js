@@ -10,19 +10,19 @@ class ClientController {
         console.log('ENTRAMOS EN EL CONTROLLER');
         const client = await Client.findOne({where:{email}})
         if(!client){
-            console.log('PERO AQUÍ NO')
             throw new Error('The email does not exist');
         };
         if(!await bcrypt.compare(password,client.password)){
-            console.log('NI AQUÍ!!<<<<<<<<<<<======================================')
             throw new Error('Wrong password');
         };
 
         const payload = {
             clientId: client.id,
-            tokenCreationDate: new Date
+            tokenCreationDate: new Date,
+            name: client.name,
+            phone: client.phone,
+            password: client.password
         }
-        console.log(payload,'<=============PAYLOAD')
         return jwt.sign(payload, secret)
     };
 
@@ -55,7 +55,6 @@ class ClientController {
     async deleteClientById(id) {
         return Client.destroy({where: { id }} )
     }
-
 }
 
 const clientController = new ClientController();

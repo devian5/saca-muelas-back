@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const appointmentController = require('../controllers/appointment.controller');
+const jwt = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET || 'danisecret';
 
 const appointmentAllHandler = async (req,res) => {
     try {
@@ -14,9 +16,19 @@ const appointmentAllHandler = async (req,res) => {
 
 const findClientByIdHandler = async (req,res) => {
     try {
-        const result = await appointmentController.findAllByClientId(req.params.id);
+        
+        if (req.headers && req.headers.authorization) {
+            const auth = req.headers.authorization;
+            const token = auth.split(' ')[1]
+            const payload = jwt.verify(token,secret)
+    
+            console.log(payload,'<============');
+            const result = await appointmentController.findAllByClientId(payload.clientId);
+            res.json({result,date: new Date})
+        };
 
-        res.json({result,date: new Date})
+
+
     } catch (error) {
         console.log(error);
     };
@@ -45,8 +57,8 @@ const deleteAppointmentHandler = async (req,res) => {
 
 
 router.post('/', createHandler);
-router.get('/:id', findClientByIdHandler);
-router.get('/',appointmentAllHandler);
+router.get('/', findClientByIdHandler);
+router.get('/all',appointmentAllHandler);
 router.delete('/:id', deleteAppointmentHandler);
 
 module.exports = router;

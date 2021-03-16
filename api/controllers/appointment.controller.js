@@ -7,6 +7,7 @@ class AppointmentController {
     };
 
     async indexAll() {
+        
         return Appointment.findAll();
     };
 
