@@ -21,7 +21,6 @@ class ClientController {
             tokenCreationDate: new Date,
             name: client.name,
             phone: client.phone,
-            password: client.password
         }
         return jwt.sign(payload, secret)
     };

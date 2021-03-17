@@ -22,12 +22,10 @@ const findClientByIdHandler = async (req,res) => {
             const token = auth.split(' ')[1]
             const payload = jwt.verify(token,secret)
     
-            console.log(payload,'<============');
+            console.log(payload,'<============APPOINTMENT');
             const result = await appointmentController.findAllByClientId(payload.clientId);
             res.json({result,date: new Date})
         };
-
-
 
     } catch (error) {
         console.log(error);
@@ -36,13 +34,21 @@ const findClientByIdHandler = async (req,res) => {
 
 const createHandler = async (req,res) => {
     try {
-        const result = await appointmentController.create(req.body);
+        if (req.headers && req.headers.authorization) {
+            const auth = req.headers.authorization;
+            const token = auth.split(' ')[1]
+            const payload = jwt.verify(token,secret)
+            console.log(payload.clientId);
+            let body = req.body
+            body.clientId = payload.clientId
+            const result = await appointmentController.create(body);
+            console.log(result,'<====================RESULT!!')
+            res.json({result,date: new Date});
+        }    
 
-        res.json({result,date: new Date});
     } catch (error) {
         console.log(error);
     };
-    
 };
 
 const deleteAppointmentHandler = async (req,res) => {

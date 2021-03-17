@@ -12,8 +12,8 @@ class AppointmentController {
     };
 
 
-    async findAllByClientId(id) {
-        return Appointment.findAll({ where: { id } });
+    async findAllByClientId(clientId) {
+        return Appointment.findAll({ where: { clientId } });
     };
 
     async deleteFutureAppointmentById(id) {
