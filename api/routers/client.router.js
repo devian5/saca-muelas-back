@@ -9,7 +9,7 @@ const loginHandler = async (req,res) => {
 
         const {email,password} = req.body;
         const jwt = await clientController.login(email,password);
-        console.log(jwt,'TOKEEEEEN!!')
+        console.log(jwt,'TEKKEEEEEN!!')
         const token = jwt.token;
         const client = jwt.client
         res.json({token,client, date: new Date})

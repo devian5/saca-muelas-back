@@ -8,10 +8,10 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     Clinic.init({
-        address: DataTypes.STRING,
         name: DataTypes.STRING,
         phone: DataTypes.STRING,
-        email: DataTypes.STRING
+        email: DataTypes.STRING,
+        password: DataTypes.STRING
     }, {
         sequelize,
         modelName: 'Clinic',
