@@ -22,7 +22,7 @@ const findClientByIdHandler = async (req,res) => {
             const token = auth.split(' ')[1]
             const payload = jwt.verify(token,secret)
     
-            console.log(payload,'<============APPOINTMENT');
+            console.log(payload.clientId,'<============APPOINTMENT');
             const result = await appointmentController.findAllByClientId(payload.clientId);
             res.json({result,date: new Date})
         };
@@ -60,7 +60,6 @@ const deleteAppointmentHandler = async (req,res) => {
         console.log(error);
     };
 };
-
 
 router.post('/', createHandler);
 router.get('/', findClientByIdHandler);

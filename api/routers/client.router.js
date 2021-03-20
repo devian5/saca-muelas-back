@@ -9,8 +9,10 @@ const loginHandler = async (req,res) => {
 
         const {email,password} = req.body;
         const jwt = await clientController.login(email,password);
-        console.log(jwt)
-        res.json({jwt, date: new Date})
+        console.log(jwt,'TOKEEEEEN!!')
+        const token = jwt.token;
+        const client = jwt.client
+        res.json({token,client, date: new Date})
     } catch (error) {
         console.log(error)
         return res.status(401).json({

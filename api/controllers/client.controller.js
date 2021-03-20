@@ -22,7 +22,8 @@ class ClientController {
             name: client.name,
             phone: client.phone,
         }
-        return jwt.sign(payload, secret)
+        const token = jwt.sign(payload, secret);
+        return {token,client}
     };
 
     async indexAll() {
